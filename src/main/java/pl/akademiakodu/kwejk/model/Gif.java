@@ -7,6 +7,14 @@ public class Gif {
     private String name;
     private String username;
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -19,19 +27,6 @@ public class Gif {
         this.name = name;
         this.username = username;
     }
-
-    public Gif(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-    public Gif(){}
-
-
 }
+
+

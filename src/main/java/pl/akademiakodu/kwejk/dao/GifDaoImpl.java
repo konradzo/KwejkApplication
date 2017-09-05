@@ -13,33 +13,28 @@ import java.util.stream.Collectors;
 @Component
 public class GifDaoImpl implements GifDao{
 
-    private static List<String> gifNames = new ArrayList<>();
+    private static  List<Gif> gifList=new ArrayList<>();
 
-    public static List<String> getGifList() {
-        return gifNames;
+    public static List<Gif> getGifList() {
+        return gifList;
     }
 
-    public GifDaoImpl() {
-    }
-
-    public static void setGifList(List<String> gifList) {
-        GifDaoImpl.gifNames = gifList;
+    public static void setGifList(List<Gif> gifList) {
+        GifDaoImpl.gifList = gifList;
     }
 
     static{
-        gifNames.add("android-explosion");
-        gifNames.add("ben-and-mike");
-        gifNames.add("book-dominos");
-        gifNames.add("compiler-bot");
+        gifList.add(new Gif("android-explosion","użytkownik 1"));
+        gifList.add(new Gif("ben-and-mike","użytkownik 2"));
+        gifList.add(new Gif("book-dominos","użytkownik 3"));
+        gifList.add(new Gif("compiler-bot","użytkownik 4"));
+        gifList.add(new Gif("cowboy-coder","użytkownik 5"));
+        gifList.add(new Gif("infinite-andrew","użytkownik 6"));
     }
 
-
     @Override
-    public String findByName(String name) {
-        for(String gifName: gifNames){
-            if(gifName.equals(name))
-                return gifName;
-        }
-        return null;
+    public Gif findOne(String name) {
+
+        return gifList.stream().filter((p)->p.getName().equals(name)).findFirst().get();
     }
 }

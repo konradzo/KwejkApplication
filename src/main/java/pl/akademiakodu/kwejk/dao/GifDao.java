@@ -8,5 +8,5 @@ import java.util.List;
  * Created by slickender on 04.09.2017.
  */
 public interface GifDao {
-   String findByName(String name);
+   Gif findOne(String name);
 }
