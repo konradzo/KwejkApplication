@@ -29,5 +29,10 @@ public class GifController {
         modelMap.addAttribute("gifs",gifDao.findFavorites());
         return "favorites";
     }
+    @GetMapping("/show/all")
+    public String findall(ModelMap modelMap){
+        modelMap.addAttribute("gifs",gifDao.findAll());
+        return "home";
+    }
 
 }

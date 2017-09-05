@@ -47,4 +47,8 @@ public class GifDaoImpl implements GifDao{
     public List<Gif> findFavorites() {
         return gifListFavorites;
     }
+
+    public List<Gif> findAll() {
+        return gifList;
+    }
 }

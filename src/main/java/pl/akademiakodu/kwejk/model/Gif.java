@@ -27,6 +27,10 @@ public class Gif {
         this.name = name;
         this.username = username;
     }
+
+    public String getUrl(){
+        return "/gifs/"+getName()+".gif";
+    }
 }
 
 
