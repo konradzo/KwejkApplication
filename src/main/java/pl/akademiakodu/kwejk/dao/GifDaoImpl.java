@@ -34,7 +34,6 @@ public class GifDaoImpl implements GifDao{
 
     @Override
     public Gif findOne(String name) {
-
         return gifList.stream().filter((p)->p.getName().equals(name)).findFirst().get();
     }
 }
