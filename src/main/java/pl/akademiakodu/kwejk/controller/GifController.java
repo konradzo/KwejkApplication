@@ -24,5 +24,10 @@ public class GifController {
         modelMap.addAttribute("gif", gifDao.findOne(name));
         return "gif-details";
     }
+    @GetMapping("/favorites")
+    public String favorites(ModelMap modelMap){
+        modelMap.addAttribute("gifs",gifDao.findFavorites());
+        return "favorites";
+    }
 
 }

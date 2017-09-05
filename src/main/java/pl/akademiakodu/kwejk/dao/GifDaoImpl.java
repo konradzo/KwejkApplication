@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 public class GifDaoImpl implements GifDao{
 
     private static  List<Gif> gifList=new ArrayList<>();
+    private static  List<Gif> gifListFavorites=new ArrayList<>();
 
     public static List<Gif> getGifList() {
         return gifList;
@@ -32,8 +33,18 @@ public class GifDaoImpl implements GifDao{
         gifList.add(new Gif("infinite-andrew","użytkownik 6"));
     }
 
+    static{
+        gifListFavorites.add(new Gif("android-explosion","użytkownik 1"));
+        gifListFavorites.add(new Gif("compiler-bot","użytkownik 4"));
+    }
+
     @Override
     public Gif findOne(String name) {
         return gifList.stream().filter((p)->p.getName().equals(name)).findFirst().get();
+    }
+
+    @Override
+    public List<Gif> findFavorites() {
+        return gifListFavorites;
     }
 }
