@@ -5,9 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 import pl.akademiakodu.kwejk.dao.GifDao;
-import pl.akademiakodu.kwejk.dao.GifDaoImpl;
 
 @Controller
 public class GifController {
