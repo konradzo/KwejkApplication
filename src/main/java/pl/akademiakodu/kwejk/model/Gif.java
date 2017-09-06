@@ -6,6 +6,7 @@ package pl.akademiakodu.kwejk.model;
 public class Gif {
     private String name;
     private String username;
+    private Category category;
 
     public String getName() {
         return name;
@@ -23,14 +24,29 @@ public class Gif {
         this.username = username;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     public Gif(String name, String username) {
         this.name = name;
         this.username = username;
     }
 
+    public Gif(String name, String username, Category category) {
+        this(name, username);
+        this.category = category;
+    }
+
     public String getUrl(){
         return "/gifs/"+getName()+".gif";
     }
+
+
 }
 
 
