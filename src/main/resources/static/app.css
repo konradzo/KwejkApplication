@@ -221,6 +221,15 @@ nav ul li.active, nav ul li:hover {
     border: 1px solid #E0DCE6;
 }
 
+.input-field input[type="submit"] {
+   float: right;
+   position: absolute;
+   right: 10px;
+   background-color: transparent;
+   top: 3px;
+   font-size: 30px;
+}
+
 @media only screen and (max-width: 992px) {
     nav .brand-logo {
         left: 0;
