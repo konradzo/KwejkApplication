@@ -41,8 +41,10 @@ public class GifController {
     }
     @GetMapping("/gif/find")
     public String findAndShow(@RequestParam String name, ModelMap modelMap){
-        modelMap.addAttribute("gif", gifDao.findOne(name));
-        return "gif-details";
+        modelMap.addAttribute("gifs", gifDao.findOne(name));
+        if(gifDao.findOne(name)==null)
+            modelMap.addAttribute("message","Nie znaleziono.");
+        return "home";
     }
     @GetMapping("/category/{id}")
     public String category(@PathVariable Integer id, ModelMap modelMap){
