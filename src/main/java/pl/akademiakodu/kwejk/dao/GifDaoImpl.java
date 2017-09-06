@@ -48,7 +48,10 @@ public class GifDaoImpl implements GifDao{
         return gifListFavorites;
     }
 
+    @Override
     public List<Gif> findAll() {
         return gifList;
     }
+
+
 }
