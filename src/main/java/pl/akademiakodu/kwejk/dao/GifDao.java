@@ -18,4 +18,6 @@ public interface GifDao {
 
     Set<Category> findCategories();
 
+    List<Gif> findByCategory(Integer id);
+
 }

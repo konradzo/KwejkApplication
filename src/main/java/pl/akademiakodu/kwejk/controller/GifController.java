@@ -1,5 +1,6 @@
 package pl.akademiakodu.kwejk.controller;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -42,6 +43,12 @@ public class GifController {
     public String findAndShow(@RequestParam String name, ModelMap modelMap){
         modelMap.addAttribute("gif", gifDao.findOne(name));
         return "gif-details";
+    }
+    @GetMapping("/category/{id}")
+    public String category(@PathVariable Integer id, ModelMap modelMap){
+        modelMap.addAttribute("gifs",gifDao.findByCategory(id));
+        modelMap.addAttribute("gifLabel",gifDao.findOne(gifDao.findByCategory(id).get(0).getName()));
+        return "category";
     }
 
 }

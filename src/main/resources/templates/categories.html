@@ -50,8 +50,8 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-title">
-                        <p th:text="${category}">
-                        <!-- <a th:href="@{'/category/' + ${category.id}}" th:text="${category.name}">Category Name</a> -->
+                        <!-- <p th:text="${category}"> -->
+                        <a th:href="@{'/category/' + ${category.getId()}}" th:text="${category}">Category Name</a>
                     </div>
                 </div>
             </div>

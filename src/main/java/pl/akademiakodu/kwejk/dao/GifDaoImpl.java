@@ -8,15 +8,15 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
+import java.util.stream.Collectors;
 /**
  * Created by slickender on 04.09.2017.
  */
 @Component
-public class GifDaoImpl implements GifDao{
+public class GifDaoImpl implements GifDao {
 
-    private static  List<Gif> gifList=new ArrayList<>();
-    private static  List<Gif> gifListFavorites=new ArrayList<>();
+    private static List<Gif> gifList = new ArrayList<>();
+    private static List<Gif> gifListFavorites = new ArrayList<>();
 
     public static List<Gif> getGifList() {
         return gifList;
@@ -26,23 +26,23 @@ public class GifDaoImpl implements GifDao{
         GifDaoImpl.gifList = gifList;
     }
 
-    static{
-        gifList.add(new Gif("android-explosion","użytkownik 1", Category.IT));
-        gifList.add(new Gif("ben-and-mike","użytkownik 2", Category.ANNOYING));
-        gifList.add(new Gif("book-dominos","użytkownik 3", Category.OTHER));
-        gifList.add(new Gif("compiler-bot","użytkownik 4", Category.MACHINES));
-        gifList.add(new Gif("cowboy-coder","użytkownik 5", Category.OTHER));
-        gifList.add(new Gif("infinite-andrew","użytkownik 6", Category.ANNOYING));
+    static {
+        gifList.add(new Gif("android-explosion", "użytkownik 1", Category.IT));
+        gifList.add(new Gif("ben-and-mike", "użytkownik 2", Category.ANNOYING));
+        gifList.add(new Gif("book-dominos", "użytkownik 3", Category.OTHER));
+        gifList.add(new Gif("compiler-bot", "użytkownik 4", Category.MACHINES));
+        gifList.add(new Gif("cowboy-coder", "użytkownik 5", Category.OTHER));
+        gifList.add(new Gif("infinite-andrew", "użytkownik 6", Category.ANNOYING));
     }
 
-    static{
-        gifListFavorites.add(new Gif("android-explosion","użytkownik 1"));
-        gifListFavorites.add(new Gif("compiler-bot","użytkownik 4"));
+    static {
+        gifListFavorites.add(new Gif("android-explosion", "użytkownik 1"));
+        gifListFavorites.add(new Gif("compiler-bot", "użytkownik 4"));
     }
 
     @Override
     public Gif findOne(String name) {
-        return gifList.stream().filter((p)->p.getName().equals(name)).findFirst().get();
+        return gifList.stream().filter((p) -> p.getName().equals(name)).findFirst().get();
     }
 
     @Override
@@ -58,9 +58,21 @@ public class GifDaoImpl implements GifDao{
     @Override
     public Set<Category> findCategories() {
         Set<Category> categorySet = new HashSet<>();
-        for (Gif i : gifList){
+        for (Gif i : gifList) {
             categorySet.add(i.getCategory());
         }
         return categorySet;
+    }
+
+    @Override
+    public List<Gif> findByCategory(Integer id) {
+        List<Gif> searchByCategory = new ArrayList<>();
+        for (Gif i : gifList){
+            if (i.getCategory().getId().equals(id)){
+                searchByCategory.add(i);
+            }
+        }
+        return searchByCategory;
+        /*gifList.stream().filter((p) -> p.getCategory().getId().equals(id)).collect(Collectors.toList());*/
     }
 }
