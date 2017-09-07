@@ -37,7 +37,7 @@
             <form action="#" method="get">
                 <div class="input-field">
                     <input name="q" type="search" placeholder="Search all gifs..." required="required" autocomplete="off"/>
-                    <i class="material-icons">search</i>
+                    <input type="submit" value="&#8981;">
                 </div>
             </form>
         </div>
@@ -49,7 +49,7 @@
         <div th:each="gif : ${gifs}" class="col s12 l4">
             <a th:href="@{${gif.getUrl()}}">
                 <img th:src="@{${gif.getUrl()}}"/>
-                <!--&lt;!&ndash; <a href="#" th:class="(${gif.favorite}? 'un' : '') + 'mark favorite'"></a> &ndash;&gt;-->
+                <a href="#" th:class="(${gif.favorite}? 'un' : '') + 'mark favorite'"></a>
             </a>
         </div>
     </div>
