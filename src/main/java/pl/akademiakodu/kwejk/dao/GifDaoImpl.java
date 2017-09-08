@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
 /**
  * Created by slickender on 04.09.2017.
  */
@@ -15,7 +16,6 @@ import java.util.Set;
 public class GifDaoImpl implements GifDao {
 
     private static List<Gif> gifList = new ArrayList<>();
-    private static List<Gif> gifListFavorites = new ArrayList<>();
 
     public static List<Gif> getGifList() {
         return gifList;
@@ -26,23 +26,18 @@ public class GifDaoImpl implements GifDao {
     }
 
     static {
-        gifList.add(new Gif("android-explosion", "użytkownik 1", Category.IT));
-        gifList.add(new Gif("ben-and-mike", "użytkownik 2", Category.ANNOYING));
-        gifList.add(new Gif("book-dominos", "użytkownik 3", Category.OTHER));
-        gifList.add(new Gif("compiler-bot", "użytkownik 4", Category.MACHINES));
-        gifList.add(new Gif("cowboy-coder", "użytkownik 5", Category.OTHER));
-        gifList.add(new Gif("infinite-andrew", "użytkownik 6", Category.ANNOYING));
-    }
-
-    static {
-        gifListFavorites.add(new Gif("android-explosion", "użytkownik 1"));
-        gifListFavorites.add(new Gif("compiler-bot", "użytkownik 4"));
+        gifList.add(new Gif("android-explosion", "user 1", Category.IT, true));
+        gifList.add(new Gif("ben-and-mike", "user 2", Category.ANNOYING, false));
+        gifList.add(new Gif("book-dominos", "user 3", Category.OTHER, false));
+        gifList.add(new Gif("compiler-bot", "user 4", Category.MACHINES, true));
+        gifList.add(new Gif("cowboy-coder", "user 5", Category.OTHER, false));
+        gifList.add(new Gif("infinite-andrew", "user 6", Category.ANNOYING, false));
     }
 
     @Override
     public Gif findOne(String name) {
-        for(Gif gif: findAll()){
-            if(gif.getName().equals(name))
+        for (Gif gif : findAll()) {
+            if (gif.getName().equals(name))
                 return gif;
         }
         return null;
@@ -50,6 +45,11 @@ public class GifDaoImpl implements GifDao {
 
     @Override
     public List<Gif> findFavorites() {
+        List<Gif> gifListFavorites = new ArrayList<>();
+        for (Gif gif : gifList) {
+            if (gif.isFavorite() == true)
+                gifListFavorites.add(gif);
+        }
         return gifListFavorites;
     }
 
@@ -70,8 +70,8 @@ public class GifDaoImpl implements GifDao {
     @Override
     public List<Gif> findByCategory(Integer id) {
         List<Gif> searchByCategory = new ArrayList<>();
-        for (Gif i : gifList){
-            if (i.getCategory().getId().equals(id)){
+        for (Gif i : gifList) {
+            if (i.getCategory().getId().equals(id)) {
                 searchByCategory.add(i);
             }
         }

@@ -36,7 +36,7 @@
             <div class="col s12">
                 <form th:action="@{/gif/find}" th:method="get">
                     <div class="input-field">
-                        <input name="name" type="search" placeholder="Wyszukiwanie..." required="required" autocomplete="off"/>
+                        <input name="name" type="search" placeholder="Search all gifs..." required="required" autocomplete="off"/>
                         <input type="submit" value="&#8981;">
                     </div>
                 </form>
@@ -48,7 +48,7 @@
             <div th:each="gif : ${gifs}" class="col s12 l4">
                 <a th:href="@{|/gif/${gif.name}|}">
                     <img th:src="@{|/gifs/${gif.name}.gif|}" />
-                   <!-- <a href="#" th:class="(${gif.favorite}? 'un' : '') + 'mark favorite'"></a>-->
+                    <a href="#" th:class="(${gif.favorite}? 'un' : '') + 'mark favorite'"></a>
                 </a>
             </div>
         </div>
